@@ -1,0 +1,37 @@
+{
+  "name": "获取页面镜像",
+  "manifest_version": 2,
+  "version": "1.0",
+	"description": "提取SingleFileZ插件主要逻辑，简单模拟生成页面镜像",
+  "content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"./single-file.js",
+				"./build.js"
+			],
+			"all_frames": true,
+			"match_about_blank": true
+		}
+	],
+	"background": {
+		"scripts": [
+				"./lib/single-file-zip.min.js",
+				"./lib/single-file-z-worker.js",
+				"./single-file.js",
+				"./background.js"
+		],
+		"persistent": false
+	},
+	"permissions": [
+		"identity",
+		"menus",
+		"contextMenus",
+		"downloads",
+		"storage",
+		"tabs",
+		"<all_urls>"
+	]
+}
